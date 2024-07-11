@@ -1,7 +1,7 @@
 from typing import *
 import os
 import torch
-import dgl
+
 import random
 import numpy as np
 
@@ -57,7 +57,14 @@ def normalize(s):
     return (s.max() - s) / (s.max() - s.mean())
 
 
-def build_dgl_graph(edge_index: torch.Tensor) -> dgl.DGLGraph:
+def build_dgl_graph(edge_index: torch.Tensor) -> 'dgl.DGLGraph':    # noqa
+    import warnings
+    warnings.warn("This method may not be maintained in future versions", FutureWarning)
+    try:
+        import dgl
+    except ImportError:
+        raise ImportError("DGL is not installed. Please install it.")
+    
     row, col = edge_index
     return dgl.graph((row, col))
 
