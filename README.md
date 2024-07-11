@@ -41,14 +41,15 @@ PyGCL needs the following packages to be installed beforehand:
 
 * Python 3.8+
 * PyTorch 1.9+
-* PyTorch-Geometric 1.7
-* DGL 0.7+
+* PyTorch-Geometric 1.7+
 * Scikit-learn 0.24+
 * Numpy
 * tqdm
 * NetworkX
 
 ## Installation via PyPI
+
+Before install PyGCL, please ensure [pytorch_geometric](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html) is installed.
 
 To install PyGCL with [`pip`](https://pip.pypa.io/en/stable/), simply run:
 
@@ -59,6 +60,8 @@ pip install PyGCL
 Then, you can import `GCL` from your current environment.
 
 > **A note regarding DGL**
+>
+> Currently, PyGCL only relies on `dgl` in the `utils.build_dgl_graph` function, and this method may no longer be maintained in future versions. Therefore, in future versions of PyGCL, it may no longer depend on `dgl`. So please install `dgl` as needed.
 >
 > Currently the DGL team maintains two versions, `dgl` for CPU support and `dgl-cu***` for CUDA support. Since `pip` treats them as different packages, it is hard for PyGCL to check for the version requirement of `dgl`. We have removed such dependency checks for `dgl` in our setup configuration and require the users to [install a proper version](https://www.dgl.ai/pages/start.html) by themselves.
 
